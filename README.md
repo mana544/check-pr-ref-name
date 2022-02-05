@@ -1,4 +1,4 @@
-# Check branch name on pull_request
+# GitHub Actions: Check branch name on pull_request
 This action checks the branch name(`head_ref` and `base_ref`) on the pull_request.
 
 # 概要
@@ -39,8 +39,6 @@ jobs:
     runs-on: ubuntu-latest
     name: check PR branch name
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       # Check branch name action step
       - name: check PR branch name
         uses: mana544/check-pr-ref-name@v1
