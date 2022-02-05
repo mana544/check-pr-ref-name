@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 
 try {
-    console.log("Current Dir:" + process.cwd())
+    // console.log("Current Dir:" + process.cwd())
 
     const context = github.context;
 
@@ -55,9 +55,8 @@ try {
     // オプションチェック
     if (!['pass', 'error'].includes(in_no_elem_headref)) {
         // そんなオプションは存在しないエラー
-        str = "アクションの 'no-elem-headref' オプションに指定された値 '";
-        str += in_no_elem_headref;
-        str +="' は無効です。 'pass' or 'error' のどちらかを指定してください。";
+        str = "The value '" + in_no_elem_headref + "' specified for the 'no-elem-headref' option is invalid.";
+        str += "You have to specify 'pass' or 'error'.";
         throw Error(str)
     }
 
@@ -75,7 +74,17 @@ try {
     console.log("splited head_ref: ")
     console.log(li)
 
-    // (親)要素の抽出(パス区切りがない場合は自分自身)
+    // head_ref 要素の抽出(head_ref element)
+    // head_ref から、対象要素を抽出する。
+    // * head_ref が区切り文字で区切られている場合、1つ親の要素を抽出。
+    // * head_ref が区切り文字で区切られていない場合、 head_ref をそのまま抽出。
+    // 
+    // [for example]
+    //     head_ref      ->    splited head_ref array    -> head_ref element
+    // -----------------    ----------------------------    ----------------
+    // 'foo@123'         -> ['foo', '123']               -> 'foo'           
+    // 'foo/bar/baz/qux' -> ['foo', 'bar', 'baz', 'qux'] -> 'baz'           
+    // 'foobar'          -> ['foobar']                   -> 'foobar'
     const headref_elem = li[Math.max(0, li.length -2)];
     console.log("head_ref element: " + headref_elem)
 
