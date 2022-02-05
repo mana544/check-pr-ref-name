@@ -3,7 +3,7 @@ description: 'This action checks the branch name(`head_ref` and `base_ref`) on t
 author: 'mana544'
 inputs:
   token:
-    description: 'Specify the token to use to pull_request's comment.'
+    description: 'Specify the token to use to pull_request comment.'
     required: false
     default: ${{ github.token }}
   no-elem-headref:
