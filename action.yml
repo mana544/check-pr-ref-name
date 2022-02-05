@@ -1,0 +1,34 @@
+name: 'Check branch name on pull_request'
+description: 'This action checks the branch name(`head_ref` and `base_ref`) on the pull_request.'
+author: 'mana544'
+inputs:
+  token:
+    description: 'Specify the token to use to pull_request's comment.'
+    required: false
+    default: ${{ github.token }}
+  no-elem-headref:
+    description: >
+      head_refの親要素がない場合の挙動。
+      Available Options:
+        pass: Success the action with a log message
+        error: Fail the action with an error message
+    required: false
+    default: 'error'
+  ref-delimiter:
+    description: 'branch name delimiter'
+    required: false
+    default: '/@'
+  name-rule-filter:
+    description: >
+      名前ルールフィルタをJSON書式文字列で指定します。
+      * name-rule-filter[*].headref_element  (string)
+        head_refの親要素の名前
+        head_refブランチ名にパス区切りがない場合はhead_refブランチ名そのもの
+      * name-rule-filter[*].baseref_pattern  (string)
+        base_refブランチ名の一致パターン(正規表現)
+    required: false
+    default: '[]'
+
+runs:
+  using: 'node16'
+  main: 'index.js'

@@ -1,0 +1,24 @@
+{
+  "name": "check-pr-ref-name",
+  "version": "1.0.0",
+  "description": "This action checks the branch name(`head_ref` and `base_ref`) on the pull_request.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mana544/check-pr-ref-name.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mana544/check-pr-ref-name/issues"
+  },
+  "homepage": "https://github.com/mana544/check-pr-ref-name#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
+  }
+}
